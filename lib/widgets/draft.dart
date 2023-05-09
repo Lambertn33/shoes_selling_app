@@ -1,27 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shoes_app_ui/models/shoe_model.dart';
-import 'package:shoes_app_ui/services/shoe_services.dart';
+import 'package:shoes_app_ui/helpers/constants.dart';
 
-class RowListItemsWidget extends StatefulWidget {
+class RowListItemsWidget extends StatelessWidget {
   const RowListItemsWidget({super.key});
-
-  @override
-  State<RowListItemsWidget> createState() => _RowListItemsWidgetState();
-}
-
-class _RowListItemsWidgetState extends State<RowListItemsWidget> {
-  List<Shoe> shoesList = [];
-
-  void getShoes() {
-    shoesList = ShoeServices.getShoesList();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getShoes();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +11,7 @@ class _RowListItemsWidgetState extends State<RowListItemsWidget> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          for (int i = 0; i < shoesList.length; i++)
+          for (int i = 0; i < 5; i++)
             Container(
               margin: const EdgeInsets.only(top: 10, left: 25),
               padding: const EdgeInsets.all(12),
@@ -58,7 +40,7 @@ class _RowListItemsWidgetState extends State<RowListItemsWidget> {
                         ),
                       ),
                       Image.asset(
-                        shoesList[i].imageUrl,
+                        '${Constants.imagesUrl}/shoes_2.png',
                         height: 180,
                         width: 160,
                       ),
@@ -71,27 +53,28 @@ class _RowListItemsWidgetState extends State<RowListItemsWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          shoesList[i].title,
-                          style: const TextStyle(
+                          'Nike Shoe',
+                          style: TextStyle(
                               fontSize: 24.0, fontWeight: FontWeight.w700),
                         ),
                         Text(
-                           shoesList[i].category,
-                          style: const TextStyle(
+                          'Nike Shoe',
+                          style: TextStyle(
                               fontSize: 16.0, fontWeight: FontWeight.w700),
                         ),
-                        const Spacer(),
+                        Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '€ ${shoesList[i].price}',
-                              style: const TextStyle(
+                              '€ 50',
+                              style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w700),
                             ),
                             const SizedBox(
                               width: 50,
                             ),
+                            // Icon(CupertinoIcons.cart)
                             Container(
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
@@ -111,7 +94,7 @@ class _RowListItemsWidgetState extends State<RowListItemsWidget> {
                 ],
               ),
             ),
-          const SizedBox(
+          SizedBox(
             width: 20,
           ),
         ],
