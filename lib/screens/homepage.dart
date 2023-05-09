@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:shoes_app_ui/widgets/rowListItemsWidget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -53,20 +54,24 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 child: Row(
-                  children: [                  
-                  SizedBox(
-                    width: 300,
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Search'
+                  children: [
+                    SizedBox(
+                      width: 300,
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                            border: InputBorder.none, hintText: 'Search'),
                       ),
                     ),
-                  ),
-                  const Spacer(),
-                  const Icon(Icons.search)
-                ]),
-              )
+                    const Spacer(),
+                    const Icon(Icons.search)
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              // horizontal List
+              const RowListItemsWidget()
             ],
           ),
         ),
