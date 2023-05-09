@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:shoes_app_ui/models/shoe_model.dart';
 import 'package:shoes_app_ui/services/shoe_services.dart';
+import 'package:shoes_app_ui/widgets/gridViewWidget.dart';
 import 'package:shoes_app_ui/widgets/rowListItemsWidget.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-   List<Shoe> shoesList = [];
+  List<Shoe> shoesList = [];
 
   void getShoes() {
     shoesList = ShoeServices.getShoesList();
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getShoes();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,10 +88,16 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(
-                height: 15,
+                height: 35,
               ),
               // horizontal List
-              RowListItemsWidget(shoesList: shoesList,)
+              RowListItemsWidget(
+                shoesList: shoesList,
+              ),
+              const SizedBox(
+                height: 35,
+              ),
+              GridViewListWidget(shoesList: shoesList)
             ],
           ),
         ),

@@ -24,6 +24,26 @@ class ShoeServices {
           category: 'Running Shoes',
           imageUrl: '${Constants.imagesUrl}/shoes_4.png',
           price: 180),
+      Shoe(
+          title: 'Nike Air Max 128',
+          category: 'Babies shoes',
+          imageUrl: '${Constants.imagesUrl}/shoes_1.png',
+          price: 120),
+      Shoe(
+          title: 'Air Max original',
+          category: 'Old man shoes',
+          imageUrl: '${Constants.imagesUrl}/shoes_2.png',
+          price: 180),
+      Shoe(
+          title: 'Nike Air Max 10',
+          category: 'Couple shoes',
+          imageUrl: '${Constants.imagesUrl}/shoes_3.png',
+          price: 120),
+      Shoe(
+          title: 'Nike Air force XXV',
+          category: 'Running Shoes',
+          imageUrl: '${Constants.imagesUrl}/shoes_4.png',
+          price: 180),
     ];
     return shoes;
   }
