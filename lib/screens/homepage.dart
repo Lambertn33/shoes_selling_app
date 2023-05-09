@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:shoes_app_ui/models/shoe_model.dart';
+import 'package:shoes_app_ui/services/shoe_services.dart';
 import 'package:shoes_app_ui/widgets/rowListItemsWidget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+   List<Shoe> shoesList = [];
+
+  void getShoes() {
+    shoesList = ShoeServices.getShoesList();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getShoes();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +89,7 @@ class HomePage extends StatelessWidget {
                 height: 15,
               ),
               // horizontal List
-              const RowListItemsWidget()
+              RowListItemsWidget(shoesList: shoesList,)
             ],
           ),
         ),

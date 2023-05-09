@@ -1,27 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shoes_app_ui/models/shoe_model.dart';
-import 'package:shoes_app_ui/services/shoe_services.dart';
 
 class RowListItemsWidget extends StatefulWidget {
-  const RowListItemsWidget({super.key});
+  final List <Shoe> shoesList;
+  const RowListItemsWidget({required this.shoesList, super.key});
 
   @override
   State<RowListItemsWidget> createState() => _RowListItemsWidgetState();
 }
 
 class _RowListItemsWidgetState extends State<RowListItemsWidget> {
-  List<Shoe> shoesList = [];
-
-  void getShoes() {
-    shoesList = ShoeServices.getShoesList();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getShoes();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +18,7 @@ class _RowListItemsWidgetState extends State<RowListItemsWidget> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          for (int i = 0; i < shoesList.length; i++)
+          for (int i = 0; i < widget.shoesList.length; i++)
             Container(
               margin: const EdgeInsets.only(top: 10, left: 25),
               padding: const EdgeInsets.all(12),
@@ -58,7 +47,7 @@ class _RowListItemsWidgetState extends State<RowListItemsWidget> {
                         ),
                       ),
                       Image.asset(
-                        shoesList[i].imageUrl,
+                        widget.shoesList[i].imageUrl,
                         height: 180,
                         width: 160,
                       ),
@@ -71,12 +60,12 @@ class _RowListItemsWidgetState extends State<RowListItemsWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          shoesList[i].title,
+                          widget.shoesList[i].title,
                           style: const TextStyle(
                               fontSize: 24.0, fontWeight: FontWeight.w700),
                         ),
                         Text(
-                           shoesList[i].category,
+                           widget.shoesList[i].category,
                           style: const TextStyle(
                               fontSize: 16.0, fontWeight: FontWeight.w700),
                         ),
@@ -85,7 +74,7 @@ class _RowListItemsWidgetState extends State<RowListItemsWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '€ ${shoesList[i].price}',
+                              '€ ${widget.shoesList[i].price}',
                               style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w700),
                             ),
