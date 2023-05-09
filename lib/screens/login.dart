@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_app_ui/helpers/constants.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,6 +9,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  void navigateToHomePage() {
+    Navigator.pushNamed(context, "homepage");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,11 +22,12 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Image.asset('assets/images/login.png'),
+                child: Image.asset('${Constants.imagesUrl}/login.png'),
               ),
               // first input
               inputWidget(const Icon(Icons.person), "enter username", false),
               const SizedBox(height: 24),
+              // second input
               inputWidget(const Icon(Icons.lock), "enter password", true),
               const SizedBox(height: 12),
               Container(
@@ -37,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 12),
               InkWell(
-                onTap: () {},
+                onTap: navigateToHomePage,
                 child: Container(
                   alignment: Alignment.center,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -64,19 +70,26 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              const SizedBox(height: 36,),
+              const SizedBox(
+                height: 36,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Don t have an account', style: TextStyle(
-                    fontSize: 16
-                  ),), 
-                  TextButton(onPressed: (){}, child: const Text('Sign up', style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600
-                  ),))
+                  const Text(
+                    'Don t have an account',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  TextButton(
+                    onPressed: (){},
+                    child: const Text(
+                      'Sign up',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),
@@ -84,6 +97,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  // Input
   Container inputWidget(Icon icon, String hintText, bool obscureText) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
