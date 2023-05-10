@@ -11,7 +11,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
 
   void navigateToHomePage() {
-    Navigator.pushNamed(context, "homepage");
+    Navigator.pushNamed(context, "/homepage");
   }
   @override
   Widget build(BuildContext context) {

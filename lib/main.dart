@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_app_ui/screens/homepage.dart';
-import 'package:shoes_app_ui/screens/login.dart';
+import 'package:shoes_app_ui/router/router.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -16,10 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFcEDDEE)
       ),
-      routes: {
-        "/" :  (context) => const LoginPage(),
-        "homepage": (context) => const HomePage()
-      },
+      initialRoute: "/",
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
