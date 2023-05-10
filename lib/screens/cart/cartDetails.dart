@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../helpers/constants.dart';
+import 'package:shoes_app_ui/models/cart_model.dart';
 import '../../widgets/badgeContainerWidget.dart';
 
 class CartShoeDetails extends StatefulWidget {
-  const CartShoeDetails({super.key});
+  Cart shoeInMyCart;
+  CartShoeDetails({required this.shoeInMyCart, super.key});
 
   @override
   State<CartShoeDetails> createState() => _CartShoeDetailsState();
@@ -46,7 +46,7 @@ class _CartShoeDetailsState extends State<CartShoeDetails> {
                   ),
                 ),
                 Image.asset(
-                  '${Constants.imagesUrl}/shoes_1.png',
+                  widget.shoeInMyCart.shoe.imageUrl,
                   height: 130,
                   width: 130,
                   fit: BoxFit.contain,
@@ -60,8 +60,8 @@ class _CartShoeDetailsState extends State<CartShoeDetails> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  'Nike Shoe',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  widget.shoeInMyCart.shoe.title,
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
                 Row(
                   children: [
@@ -113,17 +113,21 @@ class _CartShoeDetailsState extends State<CartShoeDetails> {
             padding: const EdgeInsets.symmetric(vertical: 30.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                BadgeContainerWidget(
-                  child: Icon(
-                    CupertinoIcons.trash,
-                    color: Colors.red,
+              children: [
+                InkWell(
+                  onTap: (){},
+                  child: const BadgeContainerWidget(
+                    child: Icon(
+                      CupertinoIcons.trash,
+                      color: Colors.red,
+                    ),
                   ),
                 ),
                 Text(
-                  '50',
+                  '€ ${widget.shoeInMyCart.shoe.price}',
                   style: const TextStyle(
-                      fontWeight: FontWeight.w500, fontSize: 24),
+                      color: Colors.red,
+                      fontWeight: FontWeight.w500, fontSize: 16),
                 ),
               ],
             ),

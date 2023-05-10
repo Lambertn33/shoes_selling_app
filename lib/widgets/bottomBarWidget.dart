@@ -1,11 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shoes_app_ui/models/cart_model.dart';
 import 'package:shoes_app_ui/screens/cart/cartWidget.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
-class HomeBottomBarWidget extends StatelessWidget {
+import '../services/shoe_services.dart';
+
+class HomeBottomBarWidget extends StatefulWidget {
   const HomeBottomBarWidget({super.key});
 
+  @override
+  State<HomeBottomBarWidget> createState() => _HomeBottomBarWidgetState();
+}
+
+class _HomeBottomBarWidgetState extends State<HomeBottomBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,8 +24,18 @@ class HomeBottomBarWidget extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(35), topRight: Radius.circular(35))),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, '/');
+            },
+            child: const Icon(
+              Icons.category_outlined,
+              size: 30,
+              color: Colors.white,
+            ),
+          ),
           InkWell(
               onTap: () {
                 showSlidingBottomSheet(
