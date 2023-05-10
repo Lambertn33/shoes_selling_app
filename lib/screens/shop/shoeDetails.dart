@@ -12,6 +12,13 @@ class ShoeDetails extends StatefulWidget {
 }
 
 class _ShoeDetailsState extends State<ShoeDetails> {
+  int selectedShoeSize = 5;
+
+  void updateSelectedShoe(size) {
+    setState(() {
+      selectedShoeSize = size;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,21 +172,27 @@ class _ShoeDetailsState extends State<ShoeDetails> {
                         width: 8,
                       ),
                       for (int i = 5; i < 11; i++)
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 7),
-                          height: 35,
-                          width: 35,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8),
-                            boxShadow: const [
-                              BoxShadow(blurRadius: 5, spreadRadius: 1),
-                            ],
-                          ),
-                          child: Text(
-                            '$i',
-                            style: const TextStyle(fontWeight: FontWeight.w500),
+                        InkWell(
+                          onTap: () {
+                            updateSelectedShoe(i);
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 7),
+                            height: 35,
+                            width: 35,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: selectedShoeSize == i ? Colors.red : Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                              boxShadow: const [
+                                BoxShadow(blurRadius: 5, spreadRadius: 1),
+                              ],
+                            ),
+                            child: Text(
+                              '$i',
+                              style: const TextStyle(fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         )
                     ],
