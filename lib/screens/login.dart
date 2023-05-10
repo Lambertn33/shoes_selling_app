@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_app_ui/helpers/constants.dart';
+import 'package:shoes_app_ui/widgets/bottomBarWidget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const HomeBottomBarWidget(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(

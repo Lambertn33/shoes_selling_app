@@ -47,10 +47,15 @@ class HomeBottomBarWidget extends StatelessWidget {
             size: 30,
             color: Colors.white,
           ),
-          const Icon(
-            Icons.person,
-            size: 30,
-            color: Colors.white,
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, '/login');
+            },
+            child: const Icon(
+              Icons.person,
+              size: 30,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
