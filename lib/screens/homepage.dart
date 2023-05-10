@@ -5,6 +5,7 @@ import 'package:shoes_app_ui/screens/shop/featuredShoes.dart';
 import 'package:shoes_app_ui/screens/shop/latestShoes.dart';
 import 'package:shoes_app_ui/services/shoe_services.dart';
 import 'package:shoes_app_ui/widgets/badgeContainerWidget.dart';
+import 'package:shoes_app_ui/widgets/bottomBarWidget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,6 +30,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const HomeBottomBarWidget(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
