@@ -11,7 +11,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const LoginPage());
       case "/homepage":
         return MaterialPageRoute(builder: (context) => const HomePage());
-      case "shoeDetails": 
+      case "/shoeDetails": 
         final Shoe selectedShoe = settings.arguments as Shoe;
         return MaterialPageRoute(builder: (context) => ShoeDetails(shoe: selectedShoe), settings: settings);
 

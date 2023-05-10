@@ -11,6 +11,7 @@ class FeaturedShoesList extends StatefulWidget {
 }
 
 class _FeaturedShoesListState extends State<FeaturedShoesList> {
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -50,7 +51,9 @@ class _FeaturedShoesListState extends State<FeaturedShoesList> {
                 child: Column(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: (){
+                        Navigator.pushNamed(context, "/shoeDetails", arguments: widget.shoesList[i]);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.all(10),
                         child: Image.asset(
