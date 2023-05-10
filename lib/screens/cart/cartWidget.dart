@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_app_ui/models/cart_model.dart';
 import 'package:shoes_app_ui/screens/cart/cartDetails.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../../services/shoe_services.dart';
 
@@ -148,37 +149,56 @@ class _MyCartState extends State<MyCart> {
                       ),
                       const Divider()
                     ],
-
                   ),
                 ),
-                const SizedBox(height: 15,),
+                const SizedBox(
+                  height: 15,
+                ),
                 InkWell(
-                onTap: (){},
-                child: Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  height: 55,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF475269),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                          color: const Color(0xFF475269).withOpacity(0.3),
-                          blurRadius: 5,
-                          spreadRadius: 1),
-                    ],
-                  ),
-                  child: const Text(
-                    'Proceed to checkout',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
+                  onTap: () {
+                    Alert(
+                      type: AlertType.success,
+                      context: context,
+                      title: "Success",
+                      desc: "Thanks for shopping with us",
+                      buttons: [
+                        DialogButton(
+                          onPressed: () => Navigator.pushNamed(context, '/'),
+                          color: const Color.fromRGBO(0, 179, 134, 1.0),
+                          radius: BorderRadius.circular(0.0),
+                          child: const Text(
+                            "Go to homepage",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                      ],
+                    ).show();
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    height: 55,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF475269),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                            color: const Color(0xFF475269).withOpacity(0.3),
+                            blurRadius: 5,
+                            spreadRadius: 1),
+                      ],
+                    ),
+                    child: const Text(
+                      'Proceed to checkout',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-              ),
               ] else ...[
                 Container(
                   height: 200,
