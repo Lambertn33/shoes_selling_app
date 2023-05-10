@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:shoes_app_ui/models/shoe_model.dart';
+import 'package:shoes_app_ui/screens/shop/featuredShoes.dart';
+import 'package:shoes_app_ui/screens/shop/latestShoes.dart';
 import 'package:shoes_app_ui/services/shoe_services.dart';
-import 'package:shoes_app_ui/widgets/gridViewWidget.dart';
-import 'package:shoes_app_ui/widgets/rowListItemsWidget.dart';
+import 'package:shoes_app_ui/widgets/badgeContainerWidget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,15 +38,15 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    badgeContainer(
-                      const Icon(
+                  children: const [
+                    BadgeContainerWidget(
+                      child: Icon(
                         Icons.sort,
                         size: 30,
                       ),
                     ),
-                    badgeContainer(
-                      const badges.Badge(
+                    BadgeContainerWidget(
+                      child: badges.Badge(
                         badgeContent: Text(
                           '3',
                           style: TextStyle(color: Colors.white),
@@ -91,34 +92,17 @@ class _HomePageState extends State<HomePage> {
                 height: 35,
               ),
               // horizontal List
-              RowListItemsWidget(
+              LatestShoesPage(
                 shoesList: shoesList,
               ),
               const SizedBox(
                 height: 35,
               ),
-              GridViewListWidget(shoesList: shoesList)
+              FeaturedShoesList(shoesList: shoesList)
             ],
           ),
         ),
       ),
     );
-  }
-
-  Container badgeContainer(child) {
-    return Container(
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0xFF475269).withOpacity(0.3),
-              blurRadius: 5,
-              spreadRadius: 1,
-            ),
-          ],
-        ),
-        child: child);
   }
 }

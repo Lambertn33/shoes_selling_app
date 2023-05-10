@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shoes_app_ui/models/shoe_model.dart';
 
-class GridViewListWidget extends StatefulWidget {
+class FeaturedShoesList extends StatefulWidget {
   final List<Shoe> shoesList;
-  const GridViewListWidget({required this.shoesList, super.key});
+  const FeaturedShoesList({required this.shoesList, super.key});
 
   @override
-  State<GridViewListWidget> createState() => _GridViewListWidgetState();
+  State<FeaturedShoesList> createState() => _FeaturedShoesListState();
 }
 
-class _GridViewListWidgetState extends State<GridViewListWidget> {
+class _FeaturedShoesListState extends State<FeaturedShoesList> {
   @override
   Widget build(BuildContext context) {
     return Column(

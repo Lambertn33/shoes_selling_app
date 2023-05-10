@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shoes_app_ui/models/shoe_model.dart';
 
-class RowListItemsWidget extends StatefulWidget {
+class LatestShoesPage extends StatefulWidget {
   final List<Shoe> shoesList;
-  const RowListItemsWidget({required this.shoesList, super.key});
+  const LatestShoesPage({required this.shoesList, super.key});
 
   @override
-  State<RowListItemsWidget> createState() => _RowListItemsWidgetState();
+  State<LatestShoesPage> createState() => _LatestShoesPageState();
 }
 
-class _RowListItemsWidgetState extends State<RowListItemsWidget> {
+class _LatestShoesPageState extends State<LatestShoesPage> {
   @override
   Widget build(BuildContext context) {
     return Column(
