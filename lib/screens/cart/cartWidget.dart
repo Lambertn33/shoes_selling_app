@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_app_ui/helpers/showSnackBar.dart';
 import 'package:shoes_app_ui/models/cart_model.dart';
 import 'package:shoes_app_ui/screens/cart/cartDetails.dart';
 
@@ -41,10 +40,10 @@ class _MyCartState extends State<MyCart> {
     ShoeServices.removeShoeInCart(shoeId);
     final updatedList =
         shoesInMyCart.where((element) => element.shoe.id != shoeId).toList();
-        for (int i = 0; i < updatedList.length; i++) {
-        subTotal = subTotal - updatedList[i].shoe.price;
-        grandTotal = subTotal + newShippingFee;
-      }
+    for (int i = 0; i < updatedList.length; i++) {
+      subTotal = subTotal - updatedList[i].shoe.price;
+      grandTotal = subTotal + newShippingFee;
+    }
     if (updatedList.isEmpty) {
       setState(() {
         isListEmpty = true;
@@ -92,63 +91,94 @@ class _MyCartState extends State<MyCart> {
                           spreadRadius: 1),
                     ],
                   ),
-                  child: Column(children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Sub-total',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                        Text(
-                          '$subTotal',
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                    const Divider(
-                      height: 20,
-                      thickness: 0.8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Shipping',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                        Text(
-                          '$shippingFee',
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                    const Divider(
-                      height: 20,
-                      thickness: 0.8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Grand total',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                        Text(
-                          '$grandTotal',
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                    const Divider()
-                  ]),
-                )
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Sub-total',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            '$subTotal',
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w700),
+                          )
+                        ],
+                      ),
+                      const Divider(
+                        height: 20,
+                        thickness: 0.8,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Shipping',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            '$shippingFee',
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w700),
+                          )
+                        ],
+                      ),
+                      const Divider(
+                        height: 20,
+                        thickness: 0.8,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Grand total',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            '$grandTotal',
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w700),
+                          )
+                        ],
+                      ),
+                      const Divider()
+                    ],
+
+                  ),
+                ),
+                const SizedBox(height: 15,),
+                InkWell(
+                onTap: (){},
+                child: Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  height: 55,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF475269),
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                          color: const Color(0xFF475269).withOpacity(0.3),
+                          blurRadius: 5,
+                          spreadRadius: 1),
+                    ],
+                  ),
+                  child: const Text(
+                    'Proceed to checkout',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
               ] else ...[
                 Container(
                   height: 200,

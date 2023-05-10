@@ -69,48 +69,7 @@ class _CartShoeDetailsState extends State<CartShoeDetails> {
                   style: const TextStyle(fontSize: 15,
                   color: Colors.red, fontWeight: FontWeight.bold),
                 ),
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 7),
-                        height: 30,
-                        width: 30,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: const [
-                            BoxShadow(blurRadius: 5, spreadRadius: 1),
-                          ],
-                        ),
-                        child: Icon(CupertinoIcons.minus),
-                      ),
-                    ),
-                    const Text(
-                      '2',
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 7),
-                        height: 30,
-                        width: 30,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: const [
-                            BoxShadow(blurRadius: 5, spreadRadius: 1),
-                          ],
-                        ),
-                        child: Icon(CupertinoIcons.plus),
-                      ),
-                    ),
-                  ],
-                )
+                
               ],
             ),
           ),
