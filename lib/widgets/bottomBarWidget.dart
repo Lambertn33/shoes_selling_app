@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shoes_app_ui/widgets/cartWidget.dart';
+import 'package:shoes_app_ui/screens/cart/cartWidget.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class HomeBottomBarWidget extends StatelessWidget {
@@ -32,7 +32,7 @@ class HomeBottomBarWidget extends StatelessWidget {
                         elevation: 8,
                         cornerRadius: 16,
                         builder: (context, state) {
-                          return const MyCartWidget();
+                          return const MyCart();
                         });
                   },
                 );
