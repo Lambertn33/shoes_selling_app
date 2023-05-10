@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_app_ui/models/shoe_model.dart';
 import 'package:shoes_app_ui/widgets/badgeContainerWidget.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ShoeDetails extends StatefulWidget {
   final Shoe shoe;
@@ -68,7 +69,7 @@ class _ShoeDetailsState extends State<ShoeDetails> {
               ),
             ),
             Container(
-              height: 270,
+              height: MediaQuery.of(context).size.height / 2.5,
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
               decoration: BoxDecoration(
@@ -86,19 +87,107 @@ class _ShoeDetailsState extends State<ShoeDetails> {
                 ],
               ),
               child: Column(
-                children: [Row(children: [
-                  Text(widget.shoe.title, style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600
-                  ),),
-                  const Spacer(),
-                  Text('€ ${widget.shoe.price}', style: const TextStyle(
-                    fontSize: 24,
-                    color: Colors.red,
-                    fontWeight: FontWeight.w600
-                  ),),
-
-                ],)],
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        widget.shoe.title,
+                        style: const TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.w600),
+                      ),
+                      const Spacer(),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12, horizontal: 12),
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: const Text(
+                          'Add to Cart',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: RatingBar.builder(
+                        initialRating: 2,
+                        minRating: 1,
+                        direction: Axis.horizontal,
+                        itemSize: 20,
+                        itemCount: 6,
+                        itemPadding: const EdgeInsets.symmetric(horizontal: 4),
+                        itemBuilder: (context, _) => const Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                              size: 16,
+                            ),
+                        onRatingUpdate: (index) {}),
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '€ ${widget.shoe.price}',
+                      style: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.red,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  const Text(
+                    'Random description of the shoe Random description of'
+                    'the shoeRandom description of the shoe Random description',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  Row(
+                    children: [
+                      const Text(
+                        'Size:',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w700),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      for (int i = 5; i < 11; i++)
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 7),
+                          height: 35,
+                          width: 35,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: const [
+                              BoxShadow(blurRadius: 5, spreadRadius: 1),
+                            ],
+                          ),
+                          child: Text(
+                            '$i',
+                            style: const TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                        )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                ],
               ),
             ),
           ],
