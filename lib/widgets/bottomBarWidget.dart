@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shoes_app_ui/models/cart_model.dart';
 import 'package:shoes_app_ui/screens/cart/cartWidget.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
-
-import '../services/shoe_services.dart';
 
 class HomeBottomBarWidget extends StatefulWidget {
   const HomeBottomBarWidget({super.key});
