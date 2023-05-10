@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:shoes_app_ui/models/cart_model.dart';
 import 'package:shoes_app_ui/models/shoe_model.dart';
 import 'package:shoes_app_ui/screens/shop/featuredShoes.dart';
 import 'package:shoes_app_ui/screens/shop/latestShoes.dart';
@@ -16,15 +17,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Shoe> shoesList = [];
+  List<Cart> shoesInMyCart = [];
 
-  void getShoes() {
+  void getShoesServices() {
     shoesList = ShoeServices.getShoesList();
   }
+
 
   @override
   void initState() {
     super.initState();
-    getShoes();
+    getShoesServices();
   }
 
   @override

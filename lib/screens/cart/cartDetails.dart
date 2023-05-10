@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../helpers/constants.dart';
-import '../../widgets/badgeContainerWIdget.dart';
+import '../../widgets/badgeContainerWidget.dart';
 
 class CartShoeDetails extends StatefulWidget {
   const CartShoeDetails({super.key});

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_app_ui/helpers/showSnackBar.dart';
+import 'package:shoes_app_ui/models/cart_model.dart';
 import 'package:shoes_app_ui/models/shoe_model.dart';
+import 'package:shoes_app_ui/services/shoe_services.dart';
 import 'package:shoes_app_ui/widgets/badgeContainerWidget.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -19,6 +22,18 @@ class _ShoeDetailsState extends State<ShoeDetails> {
       selectedShoeSize = size;
     });
   }
+
+  void addShoeToCart(Shoe shoe) {
+    bool checkShoe = ShoeServices.checkIfShoeExistsInCart(shoe);
+    if (checkShoe) {
+      showSnackBar(context, 'shoe exists in your cart', Colors.red);
+    } else {
+      Cart newShoeToAddInCart = Cart(shoe: shoe, size: selectedShoeSize);
+      ShoeServices.addShoeInCart(newShoeToAddInCart);
+      showSnackBar(context, 'shoe added in cart', Colors.green);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,10 +125,16 @@ class _ShoeDetailsState extends State<ShoeDetails> {
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(6),
                         ),
-                        child: const Text(
-                          'Add to Cart',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w600),
+                        child: InkWell(
+                          onTap: () {
+                            addShoeToCart(widget.shoe);
+                          },
+                          child: const Text(
+                            'Add to Cart',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
                       ),
                     ],
@@ -182,7 +203,9 @@ class _ShoeDetailsState extends State<ShoeDetails> {
                             width: 35,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: selectedShoeSize == i ? Colors.red : Colors.white,
+                              color: selectedShoeSize == i
+                                  ? Colors.red
+                                  : Colors.white,
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: const [
                                 BoxShadow(blurRadius: 5, spreadRadius: 1),
@@ -190,7 +213,8 @@ class _ShoeDetailsState extends State<ShoeDetails> {
                             ),
                             child: Text(
                               '$i',
-                              style: const TextStyle(fontWeight: FontWeight.w500,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),

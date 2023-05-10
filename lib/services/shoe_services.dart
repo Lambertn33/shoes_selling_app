@@ -1,8 +1,10 @@
 import 'package:shoes_app_ui/helpers/constants.dart';
+import 'package:shoes_app_ui/models/cart_model.dart';
 import 'package:shoes_app_ui/models/shoe_model.dart';
 
 class ShoeServices {
-  static List<Shoe> shoesInMyCart = [];
+  static List<Cart> shoesInMyCart = [];
+
   static getShoesList() {
     final List<Shoe> shoes = [
       Shoe(
@@ -61,11 +63,15 @@ class ShoeServices {
     return shoesInMyCart;
   }
 
-  static addShoeInCart(Shoe shoe) {
-    return shoesInMyCart.add(shoe);
+  static addShoeInCart(Cart shoeToAdd) {
+    return shoesInMyCart.add(shoeToAdd);
+  }
+  
+  static bool checkIfShoeExistsInCart(Shoe shoeToCheck) {
+    return shoesInMyCart.any((element) => element.shoe == shoeToCheck);
   }
 
   static removeShoeInCart(shoeId) {
-    return shoesInMyCart.removeWhere((Shoe shoe) => shoe.id == shoeId);
+    return shoesInMyCart.removeWhere((Cart shoeToRemove) => shoeToRemove.shoe.id == shoeId);
   }
 }

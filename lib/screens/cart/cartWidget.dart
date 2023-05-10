@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shoes_app_ui/models/shoe_model.dart';
 import 'package:shoes_app_ui/screens/cart/cartDetails.dart';
-import 'package:shoes_app_ui/widgets/badgeContainerWIdget.dart';
-
-import '../../helpers/constants.dart';
 
 class MyCart extends StatefulWidget {
   const MyCart({super.key});
@@ -13,6 +10,11 @@ class MyCart extends StatefulWidget {
 }
 
 class _MyCartState extends State<MyCart> {
+  void addShoeToCart(
+    Shoe shoe,
+  ) {
+    print(shoe);
+  }
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -24,7 +26,6 @@ class _MyCartState extends State<MyCart> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              CartShoeDetails(),
               CartShoeDetails(),
               Container(
                 height: 140,
@@ -56,7 +57,10 @@ class _MyCartState extends State<MyCart> {
                       )
                     ],
                   ),
-                  const Divider(height: 20, thickness: 0.8,),
+                  const Divider(
+                    height: 20,
+                    thickness: 0.8,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -72,7 +76,10 @@ class _MyCartState extends State<MyCart> {
                       )
                     ],
                   ),
-                  const Divider(height: 20, thickness: 0.8,),
+                  const Divider(
+                    height: 20,
+                    thickness: 0.8,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

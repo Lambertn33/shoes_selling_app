@@ -16,13 +16,8 @@ class HomeBottomBarWidget extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(35), topRight: Radius.circular(35))),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const Icon(
-            Icons.category_outlined,
-            size: 30,
-            color: Colors.white,
-          ),
           InkWell(
               onTap: () {
                 showSlidingBottomSheet(

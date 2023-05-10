@@ -88,21 +88,11 @@ class _LatestShoesPageState extends State<LatestShoesPage> {
                                     '€ ${widget.shoesList[i].price}',
                                     style: const TextStyle(
                                         fontSize: 20,
-                                        fontWeight: FontWeight.w700),
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.w900),
                                   ),
                                   const SizedBox(
                                     width: 50,
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xFF475269),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: const Icon(
-                                      CupertinoIcons.cart_fill,
-                                      color: Colors.white,
-                                    ),
                                   ),
                                 ],
                               )

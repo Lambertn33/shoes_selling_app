@@ -11,17 +11,16 @@ class FeaturedShoesList extends StatefulWidget {
 }
 
 class _FeaturedShoesListState extends State<FeaturedShoesList> {
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const Text(
-          'Featured',
+          'Featured shoes',
           style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
         ),
         const SizedBox(
-          height: 2,
+          height: 20,
         ),
         GridView.count(
           childAspectRatio: 0.72,
@@ -50,17 +49,12 @@ class _FeaturedShoesListState extends State<FeaturedShoesList> {
                 ),
                 child: Column(
                   children: [
-                    InkWell(
-                      onTap: (){
-                        Navigator.pushNamed(context, "/shoeDetails", arguments: widget.shoesList[i]);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Image.asset(
-                          widget.shoesList[i].imageUrl,
-                          height: 90,
-                          width: 100,
-                        ),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Image.asset(
+                        widget.shoesList[i].imageUrl,
+                        height: 90,
+                        width: 100,
                       ),
                     ),
                     Padding(
@@ -93,9 +87,15 @@ class _FeaturedShoesListState extends State<FeaturedShoesList> {
                             color: const Color(0xFF475269),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          child: const Icon(
-                            CupertinoIcons.cart_fill,
-                            color: Colors.white,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, "/shoeDetails",
+                                  arguments: widget.shoesList[i]);
+                            },
+                            child: const Icon(
+                              CupertinoIcons.eye,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],
