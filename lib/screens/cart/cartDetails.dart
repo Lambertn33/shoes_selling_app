@@ -4,8 +4,9 @@ import 'package:shoes_app_ui/models/cart_model.dart';
 import '../../widgets/badgeContainerWidget.dart';
 
 class CartShoeDetails extends StatefulWidget {
-  Cart shoeInMyCart;
-  CartShoeDetails({required this.shoeInMyCart, super.key});
+  final Cart shoeInMyCart;
+  final Function removeShoeFromMyCart;
+  const CartShoeDetails({required this.removeShoeFromMyCart, required this.shoeInMyCart, super.key});
 
   @override
   State<CartShoeDetails> createState() => _CartShoeDetailsState();
@@ -63,6 +64,11 @@ class _CartShoeDetailsState extends State<CartShoeDetails> {
                   widget.shoeInMyCart.shoe.title,
                   style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
+                Text(
+                  'Size: ${widget.shoeInMyCart.size}',
+                  style: const TextStyle(fontSize: 15,
+                  color: Colors.red, fontWeight: FontWeight.bold),
+                ),
                 Row(
                   children: [
                     InkWell(
@@ -115,7 +121,9 @@ class _CartShoeDetailsState extends State<CartShoeDetails> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: (){},
+                  onTap: (){
+                    widget.removeShoeFromMyCart(widget.shoeInMyCart.shoe.id);
+                  },
                   child: const BadgeContainerWidget(
                     child: Icon(
                       CupertinoIcons.trash,

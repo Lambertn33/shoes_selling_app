@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_app_ui/helpers/showSnackBar.dart';
 import 'package:shoes_app_ui/models/cart_model.dart';
 import 'package:shoes_app_ui/screens/cart/cartDetails.dart';
 
@@ -16,12 +17,27 @@ class _MyCartState extends State<MyCart> {
   bool isListEmpty = true;
 
   void getShoesInMyCart() {
-    shoesInMyCart = ShoeServices.getShoesInMyCart();
-    if (shoesInMyCart.isNotEmpty) {
+    List<Cart> shoes = ShoeServices.getShoesInMyCart();
+    if (shoes.isNotEmpty) {
       setState(() {
+        shoesInMyCart = shoes;
         isListEmpty = false;
       });
     }
+  }
+
+  void deleteShoeInMyCart(int shoeId) {
+    ShoeServices.removeShoeInCart(shoeId);
+    final updatedList =
+        shoesInMyCart.where((element) => element.shoe.id != shoeId).toList();
+    if (updatedList.isEmpty) {
+      setState(() {
+        isListEmpty = true;
+      });
+    }
+    setState(() {
+      shoesInMyCart = updatedList;
+    });
   }
 
   @override
@@ -43,7 +59,9 @@ class _MyCartState extends State<MyCart> {
             children: [
               if (!isListEmpty) ...[
                 for (var shoeInMyCart in shoesInMyCart) ...[
-                   CartShoeDetails(shoeInMyCart: shoeInMyCart)
+                  CartShoeDetails(
+                      shoeInMyCart: shoeInMyCart,
+                      removeShoeFromMyCart: deleteShoeInMyCart)
                 ],
                 Container(
                   height: 140,
