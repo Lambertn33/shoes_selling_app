@@ -15,21 +15,36 @@ class MyCart extends StatefulWidget {
 class _MyCartState extends State<MyCart> {
   List<Cart> shoesInMyCart = [];
   bool isListEmpty = true;
+  int subTotal = 0;
+  int shippingFee = 0;
+  int grandTotal = 0;
 
   void getShoesInMyCart() {
     List<Cart> shoes = ShoeServices.getShoesInMyCart();
     if (shoes.isNotEmpty) {
+      int newShippingFee = 5;
+      for (int i = 0; i < shoes.length; i++) {
+        subTotal = subTotal + shoes[i].shoe.price;
+        grandTotal = subTotal + newShippingFee;
+      }
       setState(() {
         shoesInMyCart = shoes;
         isListEmpty = false;
+        shippingFee = newShippingFee;
+        subTotal = subTotal;
       });
     }
   }
 
   void deleteShoeInMyCart(int shoeId) {
+    int newShippingFee = 5;
     ShoeServices.removeShoeInCart(shoeId);
     final updatedList =
         shoesInMyCart.where((element) => element.shoe.id != shoeId).toList();
+        for (int i = 0; i < updatedList.length; i++) {
+        subTotal = subTotal - updatedList[i].shoe.price;
+        grandTotal = subTotal + newShippingFee;
+      }
     if (updatedList.isEmpty) {
       setState(() {
         isListEmpty = true;
@@ -81,14 +96,14 @@ class _MyCartState extends State<MyCart> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Sub-total',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w700),
                         ),
                         Text(
-                          '30',
-                          style: TextStyle(
+                          '$subTotal',
+                          style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w700),
                         )
                       ],
@@ -100,14 +115,14 @@ class _MyCartState extends State<MyCart> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Shipping',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w700),
                         ),
                         Text(
-                          '5',
-                          style: TextStyle(
+                          '$shippingFee',
+                          style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w700),
                         )
                       ],
@@ -119,14 +134,14 @@ class _MyCartState extends State<MyCart> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Grand total',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w700),
                         ),
                         Text(
-                          '35',
-                          style: TextStyle(
+                          '$grandTotal',
+                          style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w700),
                         )
                       ],
